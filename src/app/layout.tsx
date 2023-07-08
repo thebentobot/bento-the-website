@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<head />
-			<body className={inter.className}>
+			<body className={`${inter.className} dark:bg-black bg-white`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
 					<header>
 						<Navigation />

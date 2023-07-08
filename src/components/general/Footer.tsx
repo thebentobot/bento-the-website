@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div className="bg-gray-800 mt-4">
-            <footer className="bg-gray-800 max-w-screen-2xl mx-auto p-4 py-6">
+        <div className="bg-gray-900 mt-4">
+            <footer className="bg-slate-900 max-w-screen-2xl mx-auto p-4 py-6">
                 <div className="flex flex-wrap">
                     <div className="w-full md:max-w-1/2 mb-4">
                         <p className="text-yellow-300 font-medium ">Bento</p>
@@ -45,7 +45,7 @@ export default function Footer() {
                                 GitHub
                             </Link>
                             <br />
-                            <Link href="https://discord.gg/dd68WwP" className="text-gray-300 hover:text-discordBlue">
+                            <Link href="https://discord.gg/dd68WwP" className="text-gray-300 hover:text-discordblue">
                                 Discord Support Server
                             </Link>
                             <br />

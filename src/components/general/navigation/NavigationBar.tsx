@@ -25,7 +25,7 @@ interface Props {
 
 export default function NavigationBar({ navigationRoutes, notifications, avatar }: Props) {
     return (
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-black sticky top-0 z-40 backdrop-filter backdrop-blur-lg bg-opacity-30">
             {({ open }) => (
                 <Fragment>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -53,6 +53,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                                         alt="Your Company"
                                     />
+                                    <span>Bento</span>
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
