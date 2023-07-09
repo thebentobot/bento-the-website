@@ -2,13 +2,13 @@ import NavigationBar, { navigationRoute } from "./NavigationBar";
 
 const navigationRoutes: navigationRoute[] = [
     {
-        name: "About",
-        href: "/about",
+        name: "Features",
+        href: "/features",
         current: false
     },
     {
-        name: "Features",
-        href: "/features",
+        name: "About",
+        href: "/about",
         current: false
     },
     {

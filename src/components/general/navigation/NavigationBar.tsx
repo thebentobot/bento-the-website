@@ -1,5 +1,5 @@
 "use client";
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -8,9 +8,15 @@ function classNames(...classes: string[]) {
 }
 
 export interface navigationRoute {
+    icon?: string,
     name: string,
     href: string,
     current: boolean,
+}
+
+export interface navigationExtendedRoute extends navigationRoute {
+    // på den her måde kan vi tilføje flere routes til en dropdown/popover menu
+    group?: navigationRoute[],
 }
 
 interface Props {
@@ -24,8 +30,24 @@ interface Props {
 }
 
 export default function NavigationBar({ navigationRoutes, notifications, avatar }: Props) {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        // Button is displayed after scrolling for 250 pixels
+        const toggleVisibility = () => {
+            if (window.scrollY > 1) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener("scroll", toggleVisibility);
+
+        return () => window.removeEventListener("scroll", toggleVisibility);
+    }, []);
     return (
-        <Disclosure as="nav" className="bg-black sticky top-0 z-40 backdrop-filter backdrop-blur-lg bg-opacity-30">
+        <Disclosure as="nav" className={`bg-black sticky top-0 z-40 backdrop-filter backdrop-blur-sm bg-opacity-30 shadow ${isVisible ? "border-b border-gray-500" : ""}`}>
             {({ open }) => (
                 <Fragment>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
