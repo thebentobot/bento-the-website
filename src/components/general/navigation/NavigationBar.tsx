@@ -47,7 +47,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
         return () => window.removeEventListener("scroll", toggleVisibility);
     }, []);
     return (
-        <Disclosure as="nav" className={`bg-black sticky top-0 z-40 backdrop-filter backdrop-blur-sm bg-opacity-30 shadow ${isVisible ? "border-b border-gray-500" : ""}`}>
+        <Disclosure as="nav" className={`bg-black sticky top-0 z-40 backdrop-filter backdrop-blur-sm bg-opacity-30 shadow ${isVisible ? "border-b border-gray-500/25" : ""}`}>
             {({ open }) => (
                 <Fragment>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
