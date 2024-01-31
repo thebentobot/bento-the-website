@@ -33,6 +33,6 @@
   "devDependencies": {
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.4",
-    "prisma": "^5.8.1"
+    "prisma": "^5.9.0"
   }
 }
