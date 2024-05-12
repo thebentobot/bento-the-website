@@ -1,13 +1,20 @@
 "use client";
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, BellIcon, XMarkIcon, MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
+
+export const useLoaded = () => {
+	const [loaded, setLoaded] = useState(false);
+	useEffect(() => setLoaded(true), []);
+	return loaded;
+};
 
 export interface navigationRoute {
 	icon?: string;
@@ -33,6 +40,8 @@ interface Props {
 
 export default function NavigationBar({ navigationRoutes, notifications, avatar }: Props) {
 	const [isVisible, setIsVisible] = useState(false);
+	const { theme, setTheme } = useTheme();
+	const loaded = useLoaded();
 
 	useEffect(() => {
 		// Border is displayed after scrolling for 250 pixels
@@ -48,11 +57,12 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 
 		return () => window.removeEventListener("scroll", toggleVisibility);
 	}, []);
+
 	return (
 		<Disclosure
 			as="nav"
 			className={`bg-inherit sticky top-0 z-40 backdrop-filter backdrop-blur-sm bg-opacity-30 ${
-				isVisible ? "border-b dark:border-gray-900 border-gray-100 shadow" : ""
+				isVisible ? "border-b dark:border-zinc-900 border-zinc-100 shadow" : ""
 			}`}
 		>
 			{({ open }) => (
@@ -61,7 +71,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
-								<Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+								<Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-zinc-400 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black ">
 									<span className="sr-only">Open main menu</span>
 									{open ? (
 										<XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -71,23 +81,19 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 								</Disclosure.Button>
 							</div>
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-								<Link href={"/"} className="hover:bg-yellow-400">
+								<Link
+									href={"/"}
+									className="hover:bg-yellow-400 transition-colors duration-300 ease-in-out dark:text-zinc-300 dark:hover:bg-yellow-500 hover:text-black text-black rounded-md"
+								>
 									<div className="flex flex-shrink-0 items-center">
-										<Image
-											className="block h-8 w-auto lg:hidden"
-											width={500}
-											height={500}
-											src="/29.png"
-											alt="Your Company"
-										/>
-										<Image
-											className="hidden h-8 w-auto lg:block"
-											width={500}
-											height={500}
-											src="/29.png"
-											alt="Your Company"
-										/>
-										<span className="pl-5 text-black dark:text-white">Bento</span>
+										<Image className="block h-8 w-auto lg:hidden" width={500} height={500} src="/29.png" alt="Bento" />
+										<Image className="hidden h-8 w-auto lg:block" width={500} height={500} src="/29.png" alt="Bento" />
+										<span
+											key={"Bento"}
+											className={"rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ease-in-out"}
+										>
+											Bento
+										</span>
 									</div>
 								</Link>
 								<div className="hidden sm:ml-6 sm:block">
@@ -98,9 +104,9 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 												href={item.href}
 												className={classNames(
 													item.current
-														? "dark:bg-gray-900 text-white"
-														: "dark:text-gray-300 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black text-black",
-													"rounded-md px-3 py-2 text-sm font-medium"
+														? "dark:bg-yellow-500 bg-yellow-400 dark:text-zinc-300 text-black"
+														: "dark:text-zinc-300 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black text-black",
+													"rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ease-in-out",
 												)}
 												aria-current={item.current ? "page" : undefined}
 											>
@@ -114,24 +120,33 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 								{notifications && (
 									<button
 										type="button"
-										className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+										className="bg-zinc-800 p-1 rounded-full text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
 									>
 										<span className="sr-only">View notifications</span>
 										<BellIcon className="h-6 w-6" aria-hidden="true" />
 									</button>
 								)}
-
+								{loaded && (
+									<button
+										type="button"
+										onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+										className="bg-inherit p-1 rounded-full dark:text-zinc-300 text-black dark:hover:text-black dark:hover:bg-white hover:bg-black hover:text-white transition-colors duration-300 ease-in-out"
+									>
+										<span className="sr-only">Change layout mode</span>
+										{theme === "dark" ? (
+											<MoonIcon className="h-6 w-6" aria-hidden="true" />
+										) : (
+											<SunIcon className="h-6 w-6" aria-hidden="true" />
+										)}
+									</button>
+								)}
 								{/* Profile dropdown */}
 								{avatar && (
 									<Menu as="div" className="relative ml-3">
 										<div>
-											<Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+											<Menu.Button className="flex rounded-full bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-800">
 												<span className="sr-only">Open user menu</span>
-												<Image
-													className="h-8 w-8 rounded-full"
-													src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-													alt=""
-												/>
+												<Image className="h-8 w-8 rounded-full" src="/29.png" width={10} height={10} alt="" />
 											</Menu.Button>
 										</div>
 										<Transition
@@ -149,8 +164,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 														<a
 															href="#"
 															className={classNames(
-																active ? "bg-gray-100" : "",
-																"block px-4 py-2 text-sm text-gray-700"
+																active ? "bg-zinc-100" : "",
+																"block px-4 py-2 text-sm text-zinc-700",
 															)}
 														>
 															Your Profile
@@ -162,8 +177,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 														<a
 															href="#"
 															className={classNames(
-																active ? "bg-gray-100" : "",
-																"block px-4 py-2 text-sm text-gray-700"
+																active ? "bg-zinc-100" : "",
+																"block px-4 py-2 text-sm text-zinc-700",
 															)}
 														>
 															Settings
@@ -175,8 +190,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 														<a
 															href="#"
 															className={classNames(
-																active ? "bg-gray-100" : "",
-																"block px-4 py-2 text-sm text-gray-700"
+																active ? "bg-zinc-100" : "",
+																"block px-4 py-2 text-sm text-zinc-700",
 															)}
 														>
 															Sign out
@@ -199,8 +214,10 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 									as="a"
 									href={item.href}
 									className={classNames(
-										item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white",
-										"block rounded-md px-3 py-2 text-base font-medium"
+										item.current
+											? "dark:bg-yellow-500 bg-yellow-400 dark:text-zinc-300 text-black"
+											: "dark:text-zinc-300 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black text-black",
+										"block rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out text-center",
 									)}
 									aria-current={item.current ? "page" : undefined}
 								>

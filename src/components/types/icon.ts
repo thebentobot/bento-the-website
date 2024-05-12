@@ -1,7 +1,9 @@
-type IconSVGProps = React.PropsWithoutRef<React.SVGProps<SVGSVGElement>> & React.RefAttributes<SVGSVGElement>
-type IconProps = IconSVGProps & {
-      title?: string
-      titleId?: string
- }
+import { PropsWithoutRef, SVGProps, RefAttributes, FC } from "react";
 
-export type Icon = React.FC<IconProps>
+type IconSVGProps = PropsWithoutRef<SVGProps<SVGSVGElement>> & RefAttributes<SVGSVGElement>;
+type IconProps = IconSVGProps & {
+	title?: string;
+	titleId?: string;
+};
+
+export type Icon = FC<IconProps>;
