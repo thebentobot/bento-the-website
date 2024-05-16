@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Regular (light) mode */
 .landing-bg::before {
     content: "";
     position: absolute;
@@ -10,16 +11,29 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(310.1deg, #000000 63%, #0101ff 100%),
-        linear-gradient(141.85deg, #003ffd 0%, #001355 19.1%, #000b08 46%),
-        linear-gradient(299.91deg, rgba(255, 255, 255, 0) 60.87%, #9e1af5 100%),
-        linear-gradient(
-            325.39deg,
-            #470c3f 12.162162162162163%,
-            #12f6ef 100%,
-            #2d0038 30%
-        ),
-        linear-gradient(310.1deg, #a21efe 1%, #000 52%);
+    background: linear-gradient(310.1deg, #000000 63%, #4b4b00 100%),
+                linear-gradient(141.85deg, #1a1a00 0%, #4b4b00 19.1%, #000000 46%),
+                linear-gradient(299.91deg, rgba(255, 255, 255, 0) 60.87%, #f5ab35 100%),
+                linear-gradient(325.39deg, #4b4b00 12.162162162162163%, #f5c542 100%, #2d2d00 30%),
+                linear-gradient(310.1deg, #f5ab35 1%, #ffffff 52%);
     background-blend-mode: screen, screen, normal, hard-light, normal;
-    filter: brightness(1) contrast(1.5) saturate(0.6);
+    filter: brightness(1) contrast(1.5) saturate(1);
+}
+
+/* Dark mode */
+.dark .landing-bg::before {
+    content: "";
+    position: absolute;
+    z-index: -10;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(310.1deg, #000000 63%, #4b4b00 100%),
+                linear-gradient(141.85deg, #1a1a00 0%, #4b4b00 19.1%, #000000 46%),
+                linear-gradient(299.91deg, rgba(255, 255, 255, 0) 60.87%, #f5ab35 100%),
+                linear-gradient(325.39deg, #4b4b00 12.162162162162163%, #f5c542 100%, #2d2d00 30%),
+                linear-gradient(310.1deg, #f5ab35 1%, #000 52%);
+    background-blend-mode: screen, screen, normal, hard-light, normal;
+    filter: brightness(0.8) contrast(1.5) saturate(0.8);
 }

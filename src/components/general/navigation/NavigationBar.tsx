@@ -62,7 +62,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 		<Disclosure
 			as="nav"
 			className={`bg-inherit sticky top-0 z-40 backdrop-filter backdrop-blur-sm bg-opacity-30 ${
-				isVisible ? "border-b dark:border-zinc-900 border-zinc-100 shadow" : ""
+				isVisible ? "border-b dark:border-zinc-900/25 border-zinc-100/25 shadow" : ""
 			}`}
 		>
 			{({ open }) => (
@@ -130,13 +130,19 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 									<button
 										type="button"
 										onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-										className="bg-inherit p-1 rounded-full dark:text-zinc-300 text-black dark:hover:text-black dark:hover:bg-white hover:bg-black hover:text-white transition-colors duration-300 ease-in-out"
+										className="bg-inherit p-1 rounded-full dark:hover:bg-white hover:bg-black transition-colors duration-300 ease-in-out"
 									>
 										<span className="sr-only">Change layout mode</span>
 										{theme === "dark" ? (
-											<MoonIcon className="h-6 w-6" aria-hidden="true" />
+											<MoonIcon
+												className="h-6 w-6 transition-colors duration-500 ease-in-out dark:text-zinc-300 text-black dark:hover:text-black hover:text-white"
+												aria-hidden="true"
+											/>
 										) : (
-											<SunIcon className="h-6 w-6" aria-hidden="true" />
+											<SunIcon
+												className="h-6 w-6 transition-colors duration-500 ease-in-out dark:text-zinc-300 text-black dark:hover:text-black hover:text-white"
+												aria-hidden="true"
+											/>
 										)}
 									</button>
 								)}
