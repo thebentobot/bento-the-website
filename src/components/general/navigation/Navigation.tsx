@@ -1,5 +1,6 @@
 "use client";
 import NavigationBar, { navigationRoute } from "./NavigationBar";
+import { usePathname } from "next/navigation";
 
 const navigationRoutes: navigationRoute[] = [
 	{
@@ -25,6 +26,10 @@ const navigationRoutes: navigationRoute[] = [
 ];
 
 function Navigation() {
+	const pathname = usePathname();
+	navigationRoutes.forEach((route) => {
+		route.current = route.href === pathname;
+	});
 	return <NavigationBar navigationRoutes={navigationRoutes} />;
 }
 

@@ -9,20 +9,21 @@ const rankStyles = {
 	5: { width: "w-96", avatarWidth: 25, avatarHeight: 25, textSize: "text-xs" },
 };
 
+// TODO - sync colours with the main component
 export const PatreonAvatarSkeleton = ({ rank }: { rank: keyof typeof rankStyles }) => {
 	const style = rankStyles[rank];
 	return (
 		<div>
 			<li
-				className={`animate-pulse transition duration-300 ease-in-out bg-zinc-800 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg shadow overflow-hidden`}
+				className={` transition duration-300 ease-in-out bg-zinc-800 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg shadow overflow-hidden`}
 			>
-				<div className="flex-shrink-0 truncate text-zinc-700 text-left py-5">
+				<div className="flex-shrink-0 truncate text-zinc-700 text-left py-5 animate-pulse">
 					<div
-						className="rounded-full inline-block mx-4 bg-zinc-700"
+						className="rounded-full inline-block mx-4 bg-zinc-700 animate-pulse"
 						style={{ width: style.avatarWidth, height: style.avatarHeight }}
 					/>
 				</div>
-				<div className="flex-grow p-4 w-full md:w-auto overflow-hidden">
+				<div className="flex-grow p-4 w-full md:w-auto overflow-hidden animate-pulse">
 					<div className={`bg-zinc-700 h-6 ${style.textSize} rounded-md`} />
 				</div>
 			</li>
@@ -42,9 +43,9 @@ export default function PatreonAvatar({ id, name, avatar, rank }: PatreonWithRan
 		<div>
 			<li
 				key={id}
-				className={`transition duration-300 ease-in-out bg-zinc-900 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg group hover:bg-zinc-700 hover:bg-opacity-80 shadow overflow-hidden`}
+				className={`transition duration-300 ease-in-out dark:bg-zinc-900 bg-zinc-300 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg group hover:bg-zinc-700 dark:hover:bg-zinc-800 shadow overflow-hidden`}
 			>
-				<div className="flex-shrink-0 truncate text-zinc-700 text-left py-5">
+				<div className="flex-shrink-0 truncate text-left py-5">
 					<Image
 						width={style.avatarWidth}
 						height={style.avatarHeight}
@@ -56,13 +57,13 @@ export default function PatreonAvatar({ id, name, avatar, rank }: PatreonWithRan
 				<div className="flex-grow p-4 w-full md:w-auto overflow-hidden">
 					{username.length > 15 ? (
 						<div
-							className={`transition duration-1000 ease-in-out text-white text-center lg:text-left overflow-hidden ${style.textSize}`}
+							className={`transition duration-1000 ease-in-out text-black dark:text-white text-center lg:text-left overflow-hidden ${style.textSize}`}
 						>
 							{username}
 						</div>
 					) : (
 						<div
-							className={`transition duration-1000 ease-in-out text-white text-center lg:text-left overflow-hidden ${style.textSize}`}
+							className={`transition duration-1000 ease-in-out text-black dark:text-white text-center lg:text-left overflow-hidden ${style.textSize}`}
 						>
 							{username}
 						</div>

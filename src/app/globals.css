@@ -15,9 +15,9 @@
                 linear-gradient(141.85deg, #1a1a00 0%, #4b4b00 19.1%, #000000 46%),
                 linear-gradient(299.91deg, rgba(255, 255, 255, 0) 60.87%, #f5ab35 100%),
                 linear-gradient(325.39deg, #4b4b00 12.162162162162163%, #f5c542 100%, #2d2d00 30%),
-                linear-gradient(310.1deg, #f5ab35 1%, #ffffff 52%);
+                linear-gradient(310.1deg, #f5ab35 1%, #ffffff88 52%);
     background-blend-mode: screen, screen, normal, hard-light, normal;
-    filter: brightness(1) contrast(1.5) saturate(1);
+    filter: brightness(1.15) contrast(1) saturate(1);
 }
 
 /* Dark mode */
@@ -35,5 +35,5 @@
                 linear-gradient(325.39deg, #4b4b00 12.162162162162163%, #f5c542 100%, #2d2d00 30%),
                 linear-gradient(310.1deg, #f5ab35 1%, #000 52%);
     background-blend-mode: screen, screen, normal, hard-light, normal;
-    filter: brightness(0.8) contrast(1.5) saturate(0.8);
+    filter: brightness(1) contrast(1.5) saturate(0.8);
 }

@@ -5,6 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon, MoonIcon, SunIcon } from "@heroicons/re
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -39,6 +40,7 @@ interface Props {
 }
 
 export default function NavigationBar({ navigationRoutes, notifications, avatar }: Props) {
+	const pathname = usePathname();
 	const [isVisible, setIsVisible] = useState(false);
 	const { theme, setTheme } = useTheme();
 	const loaded = useLoaded();
@@ -61,8 +63,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 	return (
 		<Disclosure
 			as="nav"
-			className={`bg-inherit sticky top-0 z-40 backdrop-filter backdrop-blur-sm bg-opacity-30 ${
-				isVisible ? "border-b dark:border-zinc-900/25 border-zinc-100/25 shadow" : ""
+			className={`bg-inherit/30 sticky top-0 z-40 backdrop-filter backdrop-blur-sm ${
+				isVisible ? "border-b dark:border-zinc-900/25 border-zinc-50/25 shadow" : ""
 			}`}
 		>
 			{({ open }) => (
@@ -83,7 +85,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<Link
 									href={"/"}
-									className="hover:bg-yellow-400 transition-colors duration-300 ease-in-out dark:text-zinc-300 dark:hover:bg-yellow-500 hover:text-black text-black rounded-md"
+									className="hover:bg-yellow-400 transition-colors duration-300 ease-in-out dark:text-zinc-100 dark:hover:bg-yellow-500 hover:text-black text-black rounded-md"
 								>
 									<div className="flex flex-shrink-0 items-center">
 										<Image className="block h-8 w-auto lg:hidden" width={500} height={500} src="/29.png" alt="Bento" />
@@ -103,9 +105,11 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 												key={item.name}
 												href={item.href}
 												className={classNames(
-													item.current
-														? "dark:bg-yellow-500 bg-yellow-400 dark:text-zinc-300 text-black"
-														: "dark:text-zinc-300 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black text-black",
+													pathname === "/"
+														? "bg-inherit/30 backdrop-filter backdrop-blur-sm"
+														: item.current
+															? "dark:bg-yellow-500 bg-yellow-400 text-white dark:text-black"
+															: "dark:text-white dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-white dark:hover:text-black text-black",
 													"rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ease-in-out",
 												)}
 												aria-current={item.current ? "page" : undefined}
@@ -130,19 +134,13 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 									<button
 										type="button"
 										onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-										className="bg-inherit p-1 rounded-full dark:hover:bg-white hover:bg-black transition-colors duration-300 ease-in-out"
+										className="bg-inherit p-1 rounded-full dark:hover:bg-white hover:bg-black transition-colors duration-300 ease-in-out dark:text-zinc-100 text-black dark:hover:text-black hover:text-white"
 									>
 										<span className="sr-only">Change layout mode</span>
 										{theme === "dark" ? (
-											<MoonIcon
-												className="h-6 w-6 transition-colors duration-500 ease-in-out dark:text-zinc-300 text-black dark:hover:text-black hover:text-white"
-												aria-hidden="true"
-											/>
+											<MoonIcon className="h-6 w-6 transition-colors duration-500 ease-in-out " aria-hidden="true" />
 										) : (
-											<SunIcon
-												className="h-6 w-6 transition-colors duration-500 ease-in-out dark:text-zinc-300 text-black dark:hover:text-black hover:text-white"
-												aria-hidden="true"
-											/>
+											<SunIcon className="h-6 w-6 transition-colors duration-500 ease-in-out " aria-hidden="true" />
 										)}
 									</button>
 								)}
@@ -164,7 +162,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 											leaveFrom="transform opacity-100 scale-100"
 											leaveTo="transform opacity-0 scale-95"
 										>
-											<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+											<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
 												<Menu.Item>
 													{({ active }) => (
 														<a
@@ -211,7 +209,6 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 							</div>
 						</div>
 					</div>
-
 					<Disclosure.Panel className="sm:hidden">
 						<div className="space-y-1 px-2 pb-3 pt-2">
 							{navigationRoutes.map((item) => (
@@ -221,8 +218,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 									href={item.href}
 									className={classNames(
 										item.current
-											? "dark:bg-yellow-500 bg-yellow-400 dark:text-zinc-300 text-black"
-											: "dark:text-zinc-300 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black text-black",
+											? "dark:bg-yellow-500 bg-yellow-400 dark:text-zinc-100 text-black"
+											: "dark:text-zinc-100 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black text-black",
 										"block rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out text-center",
 									)}
 									aria-current={item.current ? "page" : undefined}

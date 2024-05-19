@@ -103,15 +103,17 @@ function PatreonSkeletons() {
 			</div>
 			<div className="max-w-screen-2xl mx-auto px-3 pt-2">
 				<SubHeader>smh</SubHeader>
-				<div className="mx-auto inline-block p-1">
-					<PatreonAvatarSkeleton rank={2} />
-				</div>
+				<ul className="block flex-wrap mx-auto text-center">
+					<div className="mx-auto inline-block p-1">
+						<PatreonAvatarSkeleton rank={2} />
+					</div>
+				</ul>
 			</div>
 		</Fragment>
 	);
 }
 
-function delayPromise<T>(promise: Promise<T>, delayInMs: number): Promise<T> {
+export function delayPromise<T>(promise: Promise<T>, delayInMs: number): Promise<T> {
 	return new Promise<T>((resolve, reject) => {
 		// Wait for the original promise to settle and then delay the resolution/rejection
 		promise.then(
@@ -121,14 +123,15 @@ function delayPromise<T>(promise: Promise<T>, delayInMs: number): Promise<T> {
 	});
 }
 
-export default async function Support() {
-	const patreons: patreon[] = await delayPromise(prisma.patreon.findMany(), 1);
+async function PatreonSupportersAsync() {
+	const patreons: patreon[] = await delayPromise(prisma.patreon.findMany(), 10000);
 	const patreonsWithRank: PatreonWithRank[] = assignDynamicRanks(patreons);
 	const patreonsByTier = groupUsersByTier(patreonsWithRank);
 
-	// i guess vi skal bruge suspense i layout.tsx, og så dele filen her op ift. hvad der skal være suspense og hvad der ikke skal være suspense
-	// dvs. hvad der er statisk og hvad der er dynamisk
+	return <PatreonSupporters {...patreonsByTier} />;
+}
 
+export default function Page() {
 	return (
 		<Fragment>
 			<SectionWrapper>
@@ -136,7 +139,7 @@ export default async function Support() {
 					Who supports <span className="text-yellow-400">Bento</span>?
 				</Header>
 				<Suspense fallback={<PatreonSkeletons />}>
-					<PatreonSupporters {...patreonsByTier} />
+					<PatreonSupportersAsync />
 				</Suspense>
 			</SectionWrapper>
 			<SectionWrapper border>
@@ -144,7 +147,7 @@ export default async function Support() {
 					What do I gain by supporting <span className="text-yellow-400">Bento</span>?
 				</Header>
 				<Paragraph>
-					By supporting Bento , you are an important part of ensuring that the performance of Bento is always stellar,
+					By supporting Bento, you are an important part of ensuring that the performance of Bento is always stellar,
 					the experience is top quality and a joy for thousands of Discord users, and available for free for everyone.{" "}
 					<strong>Everyone deserves free essential Discord Server features</strong>.
 				</Paragraph>
@@ -163,7 +166,7 @@ export default async function Support() {
 				<div className="mt-4 rounded-md">
 					<a
 						href="https://www.patreon.com/bentobot"
-						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-patreon hover:bg-patreon hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8"
+						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-patreon hover:bg-patreon hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
 					>
 						Patreon
 					</a>
@@ -172,7 +175,7 @@ export default async function Support() {
 				<div className="mt-4 rounded-md">
 					<a
 						href="https://ko-fi.com/bentobot"
-						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-kofi hover:bg-kofi hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8"
+						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-kofi hover:bg-kofi hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
 					>
 						Ko-fi ❤️☕
 					</a>
@@ -183,7 +186,7 @@ export default async function Support() {
 				<div className="mt-4 rounded-md">
 					<a
 						href="https://top.gg/bot/787041583580184609/vote"
-						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-black hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8"
+						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-black dark:text-black dark:bg-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
 					>
 						Vote on top.gg
 					</a>
