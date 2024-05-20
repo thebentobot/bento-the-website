@@ -15,16 +15,16 @@ export const PatreonAvatarSkeleton = ({ rank }: { rank: keyof typeof rankStyles 
 	return (
 		<div>
 			<li
-				className={` transition duration-300 ease-in-out bg-zinc-800 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg shadow overflow-hidden`}
+				className={` transition duration-300 ease-in-out dark:bg-zinc-900 bg-zinc-300 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg shadow overflow-hidden`}
 			>
-				<div className="flex-shrink-0 truncate text-zinc-700 text-left py-5 animate-pulse">
+				<div className="flex-shrink-0 truncate text-left py-5 animate-pulse">
 					<div
-						className="rounded-full inline-block mx-4 bg-zinc-700 animate-pulse"
+						className="rounded-full inline-block mx-4 dark:bg-zinc-700 bg-zinc-100 animate-pulse"
 						style={{ width: style.avatarWidth, height: style.avatarHeight }}
 					/>
 				</div>
 				<div className="flex-grow p-4 w-full md:w-auto overflow-hidden animate-pulse">
-					<div className={`bg-zinc-700 h-6 ${style.textSize} rounded-md`} />
+					<div className={`dark:bg-zinc-700 bg-zinc-100 h-6 ${style.textSize} rounded-md`} />
 				</div>
 			</li>
 		</div>

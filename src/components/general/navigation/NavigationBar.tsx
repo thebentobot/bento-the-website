@@ -85,7 +85,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<Link
 									href={"/"}
-									className="hover:bg-yellow-400 transition-colors duration-300 ease-in-out dark:text-zinc-100 dark:hover:bg-yellow-500 hover:text-black text-black rounded-md"
+									className={`hover:bg-yellow-400 transition-colors duration-300 ease-in-out ${pathname === "/" && theme === "dark" ? "dark:text-black dark:hover:text-white" : "dark:text-white text-black hover:text-white dark:hover:text-black"} dark:hover:bg-yellow-500 rounded-md`}
 								>
 									<div className="flex flex-shrink-0 items-center">
 										<Image className="block h-8 w-auto lg:hidden" width={500} height={500} src="/29.png" alt="Bento" />
@@ -105,11 +105,9 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 												key={item.name}
 												href={item.href}
 												className={classNames(
-													pathname === "/"
-														? "bg-inherit/30 backdrop-filter backdrop-blur-sm"
-														: item.current
-															? "dark:bg-yellow-500 bg-yellow-400 text-white dark:text-black"
-															: "dark:text-white dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-white dark:hover:text-black text-black",
+													item.current
+														? "dark:bg-yellow-500 bg-yellow-400 text-white dark:text-black"
+														: `${pathname === "/" && theme === "dark" ? "dark:text-black dark:hover:text-white" : "dark:text-white text-black hover:text-white dark:hover:text-black"} dark:hover:bg-yellow-500 hover:bg-yellow-400`,
 													"rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ease-in-out",
 												)}
 												aria-current={item.current ? "page" : undefined}
