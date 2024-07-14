@@ -1,44 +1,45 @@
 import SectionWrapper from "@/components/general/SectionWrapper";
 import FeatureImagePreview, { Feature, FeatureImagePreviewProps } from "@/components/homepage/FeatureImagePreview";
 import prisma from "@/lib/prisma";
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/react/24/outline";
+import { UserIcon, MusicalNoteIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { guild } from "@prisma/client";
 import Link from "next/link";
 import { Suspense } from "react";
-import { delayPromise } from "./support/page";
 
 const features: Feature[] = [
 	{
-		name: "Push to deploy.",
+		name: "Custom Profiles",
 		description:
-			"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-		icon: CloudArrowUpIcon,
+			"Show off your personality with a custom profile. You can set your own background picture or colour, bio description, show what music you listen to, your birthday and time at your current location. Do small customisations via commands on Discord or use the Bento web dashboard for more advanced customisation (coming soon™️).",
+		icon: UserIcon,
 	},
 	{
-		name: "SSL certificates.",
-		description: "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-		icon: LockClosedIcon,
+		name: "Last.fm Integration",
+		description:
+			"Show off your music taste with Last.fm. You can show your top artists, albums and tracks for any given period, your recent tracks, and what you're currently listening to.",
+		icon: MusicalNoteIcon,
 	},
 	{
-		name: "Database backups.",
-		description: "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
-		icon: ServerIcon,
+		name: "Tags storage",
+		description:
+			"Store your favourite images, gifs, links, and videos in Bento. Access them again when needed, for sharing a funny moment that happened a month ago or to show useful information. Can't recall what a tag was called? You can search for it by name or author. If you are bored you can also get a random tag or a list of the most popular tags on the server.",
+		icon: PhotoIcon,
 	},
 ];
 
 const featurePreview: FeatureImagePreviewProps = {
 	features: features,
-	title: "Test",
-	subtitle: "Test",
-	description: "Test",
-	image: "/29.png",
+	subtitle: "Level up your chat experience",
+	title: "Main Features",
+	description:
+		"Bento is a Discord bot that offers a variety of features to enhance your server experience. It contains a lot of fun and useful commands that will make your server more enjoyable. Small features such as the ability to check the weather, set a reminder, or look up an Urban Dictionary definition, but also",
 	right: true,
 };
 
 const FormatThousands = (x: number): string => Math.floor(x / 100) / 10.0 + "k";
 
 async function Stats() {
-	const guilds: guild[] = await delayPromise(prisma.guild.findMany(), 10000);
+	const guilds: guild[] = await prisma.guild.findMany();
 	const users = FormatThousands(
 		guilds.reduce((acc, guild) => acc + (guild.memberCount === null ? 1 : guild.memberCount), 0),
 	);
@@ -135,7 +136,7 @@ export default function Home() {
 					<div>
 						<div className="bg-gradient-to-r from-yellow-400 to-amber-400 w-72 mx-auto rounded-xl p-[2px] flex justify-center">
 							<div className="dark:bg-black bg-white dark:text-white text-black hover:text-black dark:hover:text-black dark:hover:bg-transparent hover:bg-transparent w-full mx-auto rounded-xl flex justify-center transition-colors duration-300 ease-in-out">
-								<Link className="w-full h-full text-center p-3 rounded-xl" href="/features">
+								<Link className="w-full h-full text-center p-3 rounded-xl" href="/#Main Features">
 									<span className="font-bold">Check out Bento&apos;s features</span>
 								</Link>
 							</div>
@@ -178,7 +179,6 @@ export default function Home() {
 				<FeatureImagePreview
 					features={featurePreview.features}
 					description={featurePreview.description}
-					image={featurePreview.image}
 					title={featurePreview.title}
 					subtitle={featurePreview.subtitle}
 					right

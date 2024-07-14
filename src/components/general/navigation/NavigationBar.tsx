@@ -5,7 +5,6 @@ import { Bars3Icon, BellIcon, XMarkIcon, MoonIcon, SunIcon } from "@heroicons/re
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { usePathname } from "next/navigation";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -40,13 +39,11 @@ interface Props {
 }
 
 export default function NavigationBar({ navigationRoutes, notifications, avatar }: Props) {
-	const pathname = usePathname();
 	const [isVisible, setIsVisible] = useState(false);
 	const { theme, setTheme } = useTheme();
 	const loaded = useLoaded();
 
 	useEffect(() => {
-		// Border is displayed after scrolling for 250 pixels
 		const toggleVisibility = () => {
 			if (window.scrollY > 1) {
 				setIsVisible(true);
@@ -59,6 +56,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 
 		return () => window.removeEventListener("scroll", toggleVisibility);
 	}, []);
+
+	if (!loaded) return null;
 
 	return (
 		<Disclosure
@@ -73,7 +72,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
-								<Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-zinc-400 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black ">
+								<Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 dark:text-white text-black dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black ">
 									<span className="sr-only">Open main menu</span>
 									{open ? (
 										<XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -85,7 +84,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 							<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 								<Link
 									href={"/"}
-									className={`hover:bg-yellow-400 transition-colors duration-300 ease-in-out ${pathname === "/" && theme === "dark" ? "dark:text-black dark:hover:text-white" : "dark:text-white text-black hover:text-white dark:hover:text-black"} dark:hover:bg-yellow-500 rounded-md`}
+									className={`hover:bg-yellow-400 transition-colors duration-300 ease-in-out dark:text-white text-black hover:text-white dark:hover:text-black dark:hover:bg-yellow-500 rounded-md`}
 								>
 									<div className="flex flex-shrink-0 items-center">
 										<Image className="block h-8 w-auto lg:hidden" width={500} height={500} src="/29.png" alt="Bento" />
@@ -101,19 +100,19 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 								<div className="hidden sm:ml-6 sm:block">
 									<div className="flex space-x-4">
 										{navigationRoutes.map((item) => (
-											<a
+											<Link
 												key={item.name}
 												href={item.href}
 												className={classNames(
 													item.current
 														? "dark:bg-yellow-500 bg-yellow-400 text-white dark:text-black"
-														: `${pathname === "/" && theme === "dark" ? "dark:text-black dark:hover:text-white" : "dark:text-white text-black hover:text-white dark:hover:text-black"} dark:hover:bg-yellow-500 hover:bg-yellow-400`,
+														: "dark:text-white text-black hover:text-white dark:hover:text-black dark:hover:bg-yellow-500 hover:bg-yellow-400",
 													"rounded-md px-3 py-2 text-sm font-medium transition-colors duration-300 ease-in-out",
 												)}
 												aria-current={item.current ? "page" : undefined}
 											>
 												{item.name}
-											</a>
+											</Link>
 										))}
 									</div>
 								</div>
@@ -163,7 +162,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 											<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
 												<Menu.Item>
 													{({ active }) => (
-														<a
+														<Link
 															href="#"
 															className={classNames(
 																active ? "bg-zinc-100" : "",
@@ -171,12 +170,12 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 															)}
 														>
 															Your Profile
-														</a>
+														</Link>
 													)}
 												</Menu.Item>
 												<Menu.Item>
 													{({ active }) => (
-														<a
+														<Link
 															href="#"
 															className={classNames(
 																active ? "bg-zinc-100" : "",
@@ -184,12 +183,12 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 															)}
 														>
 															Settings
-														</a>
+														</Link>
 													)}
 												</Menu.Item>
 												<Menu.Item>
 													{({ active }) => (
-														<a
+														<Link
 															href="#"
 															className={classNames(
 																active ? "bg-zinc-100" : "",
@@ -197,7 +196,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 															)}
 														>
 															Sign out
-														</a>
+														</Link>
 													)}
 												</Menu.Item>
 											</Menu.Items>
@@ -216,8 +215,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 									href={item.href}
 									className={classNames(
 										item.current
-											? "dark:bg-yellow-500 bg-yellow-400 dark:text-zinc-100 text-black"
-											: "dark:text-zinc-100 dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black text-black",
+											? "dark:bg-yellow-500 bg-yellow-400 dark:text-zinc-100 text-white dark:text-black"
+											: "dark:text-white text-black dark:hover:bg-yellow-500 hover:bg-yellow-400 hover:text-black",
 										"block rounded-md px-3 py-2 text-base font-medium transition-colors duration-300 ease-in-out text-center",
 									)}
 									aria-current={item.current ? "page" : undefined}

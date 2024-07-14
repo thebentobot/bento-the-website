@@ -3,11 +3,13 @@ import NavigationBar, { navigationRoute } from "./NavigationBar";
 import { usePathname } from "next/navigation";
 
 const navigationRoutes: navigationRoute[] = [
+	/*
 	{
 		name: "Features",
 		href: "/features",
 		current: false,
 	},
+	*/
 	{
 		name: "About",
 		href: "/about",

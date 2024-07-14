@@ -28,7 +28,6 @@ function assignDynamicRanks(patreons: patreon[]): PatreonWithRank[] {
 		supporter: false,
 	};
 
-	// Identify which tiers are present
 	patreons.forEach((patreon) => {
 		if (patreon.sponsor) tierPresence.sponsor = true;
 		if (patreon.disciple) tierPresence.disciple = true;
@@ -37,7 +36,6 @@ function assignDynamicRanks(patreons: patreon[]): PatreonWithRank[] {
 		if (patreon.supporter) tierPresence.supporter = true;
 	});
 
-	// Create a rank map based on active tiers
 	const activeTiers = Object.keys(tierPresence).filter((tier) => tierPresence[tier as keyof typeof tierPresence]);
 	const tierRankMap = activeTiers.reduce<Record<string, number>>((map, tier, index) => {
 		map[tier] = index + 1;
@@ -113,18 +111,8 @@ function PatreonSkeletons() {
 	);
 }
 
-export function delayPromise<T>(promise: Promise<T>, delayInMs: number): Promise<T> {
-	return new Promise<T>((resolve, reject) => {
-		// Wait for the original promise to settle and then delay the resolution/rejection
-		promise.then(
-			(result) => setTimeout(() => resolve(result), delayInMs),
-			(error) => setTimeout(() => reject(error), delayInMs),
-		);
-	});
-}
-
 async function PatreonSupportersAsync() {
-	const patreons: patreon[] = await delayPromise(prisma.patreon.findMany(), 10000);
+	const patreons: patreon[] = await prisma.patreon.findMany();
 	const patreonsWithRank: PatreonWithRank[] = assignDynamicRanks(patreons);
 	const patreonsByTier = groupUsersByTier(patreonsWithRank);
 
