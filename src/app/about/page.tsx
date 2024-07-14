@@ -9,7 +9,7 @@ export default function About() {
 		<Fragment>
 			<SectionWrapper>
 				<Header>
-					About <span className="text-yellow-300">Bento</span>
+					About <span className="text-yellow-400">Bento</span>
 				</Header>
 				<Paragraph>
 					Bento is a Discord bot that provides various media and entertainment commands, with a focus on quality
@@ -42,17 +42,17 @@ export default function About() {
 						className="text-kofi hover:underline"
 					>
 						Ko-fi
-					</Link>{" "}
+					</Link>
 					, where the raised funding is spend solely on hosting and improving Bento. If you are interested in reading
 					about supporting, then{" "}
-					<Link className="text-yellow-300 hover:underline" href="/support">
+					<Link className="text-yellow-400 hover:underline" href="/support">
 						Click here!
 					</Link>
 				</Paragraph>
 			</SectionWrapper>
 			<SectionWrapper border>
 				<Header>
-					What powers <span className="text-yellow-300">Bento</span>?
+					What powers <span className="text-yellow-400">Bento</span>?
 				</Header>
 				<Paragraph>
 					Bento is written in{" "}
