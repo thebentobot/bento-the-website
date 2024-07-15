@@ -1,3 +1,4 @@
+import "server-only";
 import SectionWrapper from "@/components/general/SectionWrapper";
 import Header, { SubHeader } from "@/components/general/typography/Header";
 import Paragraph from "@/components/general/typography/Paragraph";
