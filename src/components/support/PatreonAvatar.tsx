@@ -34,10 +34,7 @@ export const PatreonAvatarSkeleton = ({ rank }: { rank: keyof typeof rankStyles 
 export default function PatreonAvatar({ id, name, avatar, rank }: PatreonWithRank) {
 	const style = rankStyles[rank as keyof typeof rankStyles];
 	const username: string = name ?? "";
-	const avatarURL: string =
-		avatar === "https://cdn.discordapp.com/avatars/166142440233893888/8d5ef8a830245424c01e7575477201bd.webp?size=1024"
-			? "https://cdn.discordapp.com/avatars/166142440233893888/f7c23eecc31f17c98a5875d7354ba701.png?size=2048"
-			: avatar ?? "";
+	const avatarURL: string = avatar ?? "";
 
 	return (
 		<div>
