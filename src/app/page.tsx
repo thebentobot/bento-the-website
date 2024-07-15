@@ -1,3 +1,4 @@
+import "server-only";
 import SectionWrapper from "@/components/general/SectionWrapper";
 import FeatureImagePreview, { Feature, FeatureImagePreviewProps } from "@/components/homepage/FeatureImagePreview";
 import prisma from "@/lib/prisma";

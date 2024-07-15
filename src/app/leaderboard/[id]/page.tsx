@@ -1,3 +1,4 @@
+import "server-only";
 import SectionWrapper from "@/components/general/SectionWrapper";
 import LeaderboardParent from "@/components/leaderboard/LeaderboardParent";
 import prisma from "@/lib/prisma";

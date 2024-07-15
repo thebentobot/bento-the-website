@@ -40,7 +40,7 @@ interface Props {
 
 export default function NavigationBar({ navigationRoutes, notifications, avatar }: Props) {
 	const [isVisible, setIsVisible] = useState(false);
-	const { theme, setTheme } = useTheme();
+	const { resolvedTheme, setTheme } = useTheme();
 	const loaded = useLoaded();
 
 	useEffect(() => {
@@ -130,11 +130,11 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 								{loaded && (
 									<button
 										type="button"
-										onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+										onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
 										className="bg-inherit p-1 rounded-full dark:hover:bg-white hover:bg-black transition-colors duration-300 ease-in-out dark:text-zinc-100 text-black dark:hover:text-black hover:text-white"
 									>
 										<span className="sr-only">Change layout mode</span>
-										{theme === "dark" ? (
+										{resolvedTheme === "dark" ? (
 											<MoonIcon className="h-6 w-6 transition-colors duration-500 ease-in-out " aria-hidden="true" />
 										) : (
 											<SunIcon className="h-6 w-6 transition-colors duration-500 ease-in-out " aria-hidden="true" />

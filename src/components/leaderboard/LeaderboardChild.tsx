@@ -1,5 +1,7 @@
+"use client";
 import { LeaderboardRankingsInterface } from "@/app/leaderboard/page";
 import Image from "next/image";
+import { useState } from "react";
 
 export function LeaderboardSkeleton() {
 	return (
@@ -39,7 +41,7 @@ export default function LeaderboardChild({
 	discriminator,
 	avatarURL,
 }: LeaderboardRankingsInterface) {
-	const avatar = avatarURL ? avatarURL : `https://cdn.discordapp.com/embed/avatars/${Number(discriminator) % 5}.png`;
+	const [avatar, setAvatar] = useState(avatarURL);
 	let topUsersStyle = {};
 	const rankToNumber = Number(rank);
 
@@ -87,6 +89,7 @@ export default function LeaderboardChild({
 					style={{ textIndent: "100%" }}
 					width={64}
 					height={64}
+					onError={() => setAvatar(`https://cdn.discordapp.com/embed/avatars/${Number(discriminator) % 5}.png`)}
 				/>
 				<span className="transition duration-300 ease-in-out text-zinc-400 group-hover:text-zinc-400">
 					<span className="transition duration-300 ease-in-out dark:text-zinc-200 dark:group-hover:text-white text-zinc-800 group-hover:text-black">
