@@ -1,5 +1,7 @@
+"use client";
 import { PatreonWithRank } from "@/app/support/page";
 import Image from "next/image";
+import { useState } from "react";
 
 const rankStyles = {
 	1: { width: "w-96", avatarWidth: 125, avatarHeight: 125, textSize: "text-xl" },
@@ -32,9 +34,9 @@ export const PatreonAvatarSkeleton = ({ rank }: { rank: keyof typeof rankStyles 
 };
 
 export default function PatreonAvatar({ id, name, avatar, rank }: PatreonWithRank) {
+	const [avatarURL, setAvatarURL] = useState(avatar ?? "");
 	const style = rankStyles[rank as keyof typeof rankStyles];
 	const username: string = name ?? "";
-	const avatarURL: string = avatar ?? "";
 
 	return (
 		<div>
@@ -49,6 +51,7 @@ export default function PatreonAvatar({ id, name, avatar, rank }: PatreonWithRan
 						className={`rounded-full inline-block mx-4 whitespace-nowrap overflow-hidden`}
 						src={avatarURL}
 						alt={`${name}'s Avatar`}
+						onError={() => setAvatarURL(`https://cdn.discordapp.com/embed/avatars/${Number(0) % 5}.png`)}
 					/>
 				</div>
 				<div className="flex-grow p-4 w-full md:w-auto overflow-hidden">
