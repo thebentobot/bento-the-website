@@ -12,21 +12,20 @@ import {
 	DiscordTime,
 } from "@skyra/discord-components-react";
 import { useTheme } from "next-themes";
-import { Fragment } from "react";
 
 export default function DiscordFeaturePage() {
-	const { theme } = useTheme();
+	const { resolvedTheme } = useTheme();
 
 	return (
-		<Fragment>
-			<DiscordMessages lightTheme={theme === "dark" ? false : true}>
+		<div className="overflow-hidden">
+			<DiscordMessages lightTheme={resolvedTheme === "dark" ? false : true}>
 				<DiscordMessage
 					author="Bento"
 					avatar="/bento_discord.webp"
 					roleColor="#FACC15"
 					bot
 					verified
-					lightTheme={theme === "dark" ? false : true}
+					lightTheme={resolvedTheme === "dark" ? false : true}
 				>
 					<DiscordCommand
 						slot="reply"
@@ -34,7 +33,7 @@ export default function DiscordFeaturePage() {
 						avatar="/fiji_discord.webp"
 						roleColor="#e11d48"
 						command="profile"
-						lightTheme={theme === "dark" ? false : true}
+						lightTheme={resolvedTheme === "dark" ? false : true}
 					></DiscordCommand>
 					<DiscordImageAttachment
 						slot="attachments"
@@ -50,7 +49,7 @@ export default function DiscordFeaturePage() {
 					roleColor="#FACC15"
 					bot
 					verified
-					lightTheme={theme === "dark" ? false : true}
+					lightTheme={resolvedTheme === "dark" ? false : true}
 				>
 					<DiscordCommand
 						slot="reply"
@@ -58,7 +57,7 @@ export default function DiscordFeaturePage() {
 						avatar="/lewis_discord.webp"
 						roleColor="#8FCF00"
 						command="lastfm nowplaying"
-						lightTheme={theme === "dark" ? false : true}
+						lightTheme={resolvedTheme === "dark" ? false : true}
 					></DiscordCommand>
 					<DiscordEmbed
 						slot="embeds"
@@ -67,7 +66,7 @@ export default function DiscordFeaturePage() {
 						authorImage="/lewis_discord.webp"
 						authorUrl="https://www.last.fm/user/LewLu"
 						thumbnail="/brat_fm.webp"
-						lightTheme={theme === "dark" ? false : true}
+						lightTheme={resolvedTheme === "dark" ? false : true}
 					>
 						<DiscordEmbedDescription slot="description">
 							Now Playing
@@ -99,7 +98,7 @@ export default function DiscordFeaturePage() {
 					roleColor="#FACC15"
 					bot
 					verified
-					lightTheme={theme === "dark" ? false : true}
+					lightTheme={resolvedTheme === "dark" ? false : true}
 				>
 					<DiscordCommand
 						slot="reply"
@@ -107,7 +106,7 @@ export default function DiscordFeaturePage() {
 						avatar="/adam_discord.webp"
 						roleColor="#0092ff"
 						command="tag add"
-						lightTheme={theme === "dark" ? false : true}
+						lightTheme={resolvedTheme === "dark" ? false : true}
 					></DiscordCommand>
 					The tag <DiscordCode>im</DiscordCode> has been saved!
 				</DiscordMessage>
@@ -117,7 +116,7 @@ export default function DiscordFeaturePage() {
 					roleColor="#FACC15"
 					bot
 					verified
-					lightTheme={theme === "dark" ? false : true}
+					lightTheme={resolvedTheme === "dark" ? false : true}
 				>
 					<DiscordCommand
 						slot="reply"
@@ -125,11 +124,11 @@ export default function DiscordFeaturePage() {
 						avatar="/adam_discord.webp"
 						roleColor="#0092ff"
 						command="tag get"
-						lightTheme={theme === "dark" ? false : true}
+						lightTheme={resolvedTheme === "dark" ? false : true}
 					></DiscordCommand>
 					a mess in distress but we&apos;re still the best dressed fear less say yes we don&apos;t dress to impress
 				</DiscordMessage>
 			</DiscordMessages>
-		</Fragment>
+		</div>
 	);
 }
