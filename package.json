@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prettier": "npx prettier --write .",
     "db:pull": "npx prisma db pull",
-    "db:migrate": "npx prisma migrate dev --name"
+    "db:migrate": "npx prisma migrate dev --name",
+    "prepare": "husky"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
@@ -26,6 +27,8 @@
     "server-only": "^0.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@next/eslint-plugin-next": "^14.2.3",
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.14.11",
@@ -35,6 +38,8 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.5",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.35.0",
+    "husky": "^9.1.1",
     "postcss": "^8.4.39",
     "prettier": "^3.3.2",
     "prisma": "^5.17.0",

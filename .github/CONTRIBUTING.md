@@ -25,7 +25,7 @@ Fork the project and initialise it by following the guide in [README](README.md)
 
 #### Create a new issue
 
-If you got a great idea, any suggestions or spot a problem with the code, [search if an issue already exists](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments). If a related issue doesn't exist, you can open a new issue using a relevant [issue form](https://github.com/thebentobot/Bento/issues).
+If you got a great idea, any suggestions or spot a problem with the code, [search if an issue already exists](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments). If a related issue doesn't exist, you can open a new issue using a relevant [issue form](https://github.com/thebentobot/bento-the-website/issues).
 
 #### Solve an issue
 
@@ -59,7 +59,7 @@ Click **Make a contribution** at the bottom of any page to make small changes su
 
 ### Commit your update
 
-Commit the changes once you are happy with them. See [Atom's contributing guide](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#git-commit-messages) to know how to use emoji for commit messages.
+Commit the changes once you are happy with them. Check [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to know how to write commit messages.
 
 ### Pull Request
 
