@@ -33,7 +33,7 @@ export default function Footer() {
 						<p className="text-sm dark:text-zinc-400 text-zinc-600">
 							Source code for the website licensed{" "}
 							<Link
-								href="https://github.com/thebentobot/bento-web/blob/master/LICENSE"
+								href="https://github.com/thebentobot/bento-the-website/blob/master/LICENSE"
 								target="_blank"
 								rel="noreferrer"
 								className="hover:underline dark:text-zinc-300 text-zinc-500"
