@@ -13,7 +13,7 @@ export const siteConfig = {
 	url: "https://bentobot.xyz",
 	ogImage: "https://bentobot.xyz/bento_discord.webp",
 	description:
-		"An open-source Discord bot that is designed to be easy to use and easy to host. Bento is a multi-purpose bot that has a variety of features to help you manage your server.",
+		"Bento is a multi-purpose Discord bot with a lot of fun features such as custom profiles, tags and last.fm",
 	links: {
 		github: "https://github.com/thebentobot",
 	},
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 		shortcut: "/favicon-16x16.png",
 		apple: "/apple-touch-icon.png",
 	},
-	manifest: `${siteConfig.url}/site.webmanifest`,
+	manifest: `${siteConfig.url}/manifest.webmanifest`,
 };
 
 export const viewport: Viewport = {
