@@ -84,7 +84,7 @@ export default function LeaderboardChild({
 				</div>
 				<Image
 					className="w-16 rounded-full inline-block mx-4 whitespace-nowrap overflow-hidden"
-					src={avatar}
+					src={avatar ?? `https://cdn.discordapp.com/embed/avatars/${Number(discriminator) % 5}.png`}
 					alt={`${username}'s Avatar`}
 					style={{ textIndent: "100%" }}
 					width={64}

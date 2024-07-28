@@ -10,7 +10,7 @@ export interface LeaderboardRankingsInterface {
 	level: number;
 	xp: number;
 	userID: bigint;
-	avatarURL: string;
+	avatarURL?: string;
 	username: string;
 	discriminator: string;
 }
