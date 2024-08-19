@@ -44,7 +44,7 @@ export default function LeaderboardChild({
 	const messagesToNextLevel = Math.round((level * level * 100 - xp) / 46);
 
 	return (
-		<li className="transition duration-300 ease-in-out dark:bg-zinc-900 bg-zinc-300 flex flex-wrap items-center w-full my-4 p-2 px-4 rounded-lg group hover:bg-zinc-700 dark:hover:bg-zinc-800 shadow overflow-hidden">
+		<li className="transition duration-300 ease-in-out dark:bg-zinc-900 bg-zinc-100 flex items-center w-full my-4 p-2 px-4 rounded-lg group hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow overflow-hidden">
 			<div className="flex-shrink-0 w-72 truncate dark:text-zinc-700 text-zinc-100 text-left">
 				<div className="transition duration-300 ease-in-out inline-block dark:bg-zinc-800 bg-zinc-200 px-2 py-1 rounded-md dark:group-hover:bg-zinc-900 group-hover:bg-zinc-300">
 					<span
