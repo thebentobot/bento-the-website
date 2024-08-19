@@ -75,10 +75,13 @@ export default function LeaderboardChild({
 			</div>
 
 			<div className="flex-grow p-4 w-full md:w-auto overflow-hidden">
-				<div className="transition duration-1000 ease-in-out dark:text-white text-black text-left opacity-0 group-hover:opacity-100 overflow-hidden">
-					{Math.round((level * level * 100 - xp) / 46)} messages to level {level + 1}
+				<div className="max-lg:hidden transition duration-1000 ease-in-out dark:text-white text-black text-left opacity-0 group-hover:opacity-100 overflow-hidden">
+					{messagesToNextLevel} messages to level {level + 1}
 				</div>
-				<div className="transition duration-300 ease-in-out mt-1 mb-1 w-full h-1 bg-zinc-700 group-hover:bg-zinc-500 rounded overflow-hidden">
+				<div
+					title={`${messagesToNextLevel} messages to level ${level + 1}`}
+					className="transition duration-300 ease-in-out mt-1 mb-1 w-full h-1 dark:bg-zinc-700 dark:group-hover:bg-zinc-500 bg-zinc-300 group-hover:bg-zinc-400 rounded overflow-hidden"
+				>
 					<div
 						className="progress-done"
 						style={{
