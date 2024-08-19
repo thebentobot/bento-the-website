@@ -1,4 +1,4 @@
-import { userRankingsInterface } from "@/app/leaderboard/page";
+import { userRankingsInterface } from "./LeaderboardAsync";
 import LeaderboardChild from "./LeaderboardChild";
 
 export default function LeaderboardParent({ users }: userRankingsInterface) {

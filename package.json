@@ -10,7 +10,8 @@
     "prettier": "npx prettier --write .",
     "db:pull": "npx prisma db pull",
     "db:migrate": "npx prisma migrate dev --name",
-    "prepare": "husky"
+    "prepare": "husky",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@next/bundle-analyzer": "^14.2.5",
     "@next/eslint-plugin-next": "^14.2.3",
     "@tailwindcss/typography": "^0.5.14",
     "@types/node": "^22.4.1",

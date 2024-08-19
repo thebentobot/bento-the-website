@@ -1,1 +1,1 @@
-npm && npm run lint
+npm install && npm run lint

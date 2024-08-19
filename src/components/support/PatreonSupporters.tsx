@@ -1,8 +1,8 @@
-import { PatreonsByTier } from "@/app/support/page";
 import Link from "next/link";
 import PatreonParent from "./PatreonParent";
 import { SubHeader } from "../general/typography/Header";
 import { Fragment } from "react";
+import { PatreonsByTier } from "@/server/patreon";
 
 export default function PatreonSupporters({ sponsors, disciples, enthusiasts, followers, supporters }: PatreonsByTier) {
 	// Create an array of all categories with their respective data and labels.
