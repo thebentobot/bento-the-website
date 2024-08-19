@@ -20,9 +20,9 @@ export default function PatreonAvatar({ id, name, avatar, rank }: PatreonWithRan
 		<div>
 			<li
 				key={id}
-				className={`transition duration-300 ease-in-out dark:bg-zinc-900 bg-zinc-300 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg group hover:bg-zinc-700 dark:hover:bg-zinc-800 shadow overflow-hidden`}
+				className={`transition duration-300 ease-in-out dark:bg-zinc-900 bg-zinc-100 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg group hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow overflow-hidden`}
 			>
-				<div className="flex-shrink-0 truncate text-left py-5">
+				<div className="flex-shrink-0 truncate text-left py-5 mx-auto">
 					<Image
 						width={style.avatarWidth}
 						height={style.avatarHeight}

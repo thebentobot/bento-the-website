@@ -41,7 +41,7 @@ export default function Page() {
 				<div className="mt-4 rounded-md">
 					<a
 						href="https://www.patreon.com/bentobot"
-						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-patreon hover:bg-patreon hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
+						className="w-48 md:w-56 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-patreon hover:bg-patreon hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
 					>
 						Patreon
 					</a>
@@ -50,7 +50,7 @@ export default function Page() {
 				<div className="mt-4 rounded-md">
 					<a
 						href="https://ko-fi.com/bentobot"
-						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-kofi hover:bg-kofi hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
+						className="w-48 md:w-56 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-kofi hover:bg-kofi hover:text-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
 					>
 						Ko-fi ❤️☕
 					</a>
@@ -61,7 +61,7 @@ export default function Page() {
 				<div className="mt-4 rounded-md">
 					<a
 						href="https://top.gg/bot/787041583580184609/vote"
-						className="w-48 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-black dark:text-black dark:bg-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
+						className="w-48 md:w-56 lg:w-96 mx-auto flex items-center justify-center py-3 border border-transparent text-base font-medium rounded-md text-white bg-black dark:text-black dark:bg-white md:py-4 md:text-lg md:px-10 px-4 sm:px-6 lg:px-8 hover:animate-pulse"
 					>
 						Vote on top.gg
 					</a>
