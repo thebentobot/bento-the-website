@@ -92,7 +92,7 @@ export default function LeaderboardChild({
 				</div>
 			</div>
 
-			<div className="dark:text-white text-black pl-4 h-20 flex w-full md:w-auto items-center justify-between hover:">
+			<div className="dark:text-white text-black p-4 h-20 flex md:w-auto items-center justify-between">
 				<div>
 					Level
 					<br />
