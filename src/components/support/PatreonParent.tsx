@@ -1,4 +1,4 @@
-import { PatreonWithRank } from "@/app/support/page";
+import { PatreonWithRank } from "@/server/patreon";
 import PatreonAvatar from "./PatreonAvatar";
 
 export default function PatreonParent({ items }: { items: PatreonWithRank[] }) {
