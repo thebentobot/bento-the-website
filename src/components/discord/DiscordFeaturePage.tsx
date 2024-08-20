@@ -1,17 +1,40 @@
 "use client";
-import {
-	DiscordCode,
-	DiscordCommand,
-	DiscordEmbed,
-	DiscordEmbedDescription,
-	DiscordEmbedFooter,
-	DiscordImageAttachment,
-	DiscordLink,
-	DiscordMessage,
-	DiscordMessages,
-	DiscordTime,
-} from "@skyra/discord-components-react";
+import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
+
+const DiscordCode = dynamic(() => import("@skyra/discord-components-react").then((mod) => mod.DiscordCode), {
+	ssr: false,
+});
+const DiscordCommand = dynamic(() => import("@skyra/discord-components-react").then((mod) => mod.DiscordCommand), {
+	ssr: false,
+});
+const DiscordEmbed = dynamic(() => import("@skyra/discord-components-react").then((mod) => mod.DiscordEmbed), {
+	ssr: false,
+});
+const DiscordEmbedDescription = dynamic(
+	() => import("@skyra/discord-components-react").then((mod) => mod.DiscordEmbedDescription),
+	{ ssr: false },
+);
+const DiscordEmbedFooter = dynamic(
+	() => import("@skyra/discord-components-react").then((mod) => mod.DiscordEmbedFooter),
+	{ ssr: false },
+);
+const DiscordImageAttachment = dynamic(
+	() => import("@skyra/discord-components-react").then((mod) => mod.DiscordImageAttachment),
+	{ ssr: false },
+);
+const DiscordLink = dynamic(() => import("@skyra/discord-components-react").then((mod) => mod.DiscordLink), {
+	ssr: false,
+});
+const DiscordMessage = dynamic(() => import("@skyra/discord-components-react").then((mod) => mod.DiscordMessage), {
+	ssr: false,
+});
+const DiscordMessages = dynamic(() => import("@skyra/discord-components-react").then((mod) => mod.DiscordMessages), {
+	ssr: false,
+});
+const DiscordTime = dynamic(() => import("@skyra/discord-components-react").then((mod) => mod.DiscordTime), {
+	ssr: false,
+});
 
 export default function DiscordFeaturePage() {
 	const { resolvedTheme } = useTheme();
