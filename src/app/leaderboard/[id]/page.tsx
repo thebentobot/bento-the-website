@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import { LeaderboardAsync } from "@/components/leaderboard/LeaderboardAsync";
 import { LeaderboardPageSkeleton } from "@/components/leaderboard/LeaderboardPageSkeleton";
 
+export const revalidate = 3600; // 1 hour
+
 export default function Page({ params }: { params: { id: string } }) {
 	return (
 		<SectionWrapper>

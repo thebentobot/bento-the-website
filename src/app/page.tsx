@@ -40,6 +40,8 @@ const featurePreview: FeatureImagePreviewProps = {
 	right: true,
 };
 
+export const revalidate = 3600; // 1 hour
+
 export default function Home() {
 	return (
 		<div className="flex flex-col min-h-screen overflow-hidden">
