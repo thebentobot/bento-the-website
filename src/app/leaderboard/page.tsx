@@ -11,8 +11,8 @@ export default function Page() {
 		<SectionWrapper>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
 				<div className="lg:text-center text-center overflow-hidden">
-					<Suspense fallback={<LeaderboardAsync />}>
-						<LeaderboardPageSkeleton />
+					<Suspense fallback={<LeaderboardPageSkeleton />}>
+						<LeaderboardAsync />
 					</Suspense>
 				</div>
 			</div>
