@@ -45,7 +45,7 @@ export const revalidate = 3600; // 1 hour
 export default function Home() {
 	return (
 		<div className="flex flex-col min-h-screen overflow-hidden">
-			<div className="landing-bg w-screen max-w-full min-h-screen min-h-full pb-48 flex flex-col">
+			<div className="landing-bg w-screen max-w-full min-h-screen pb-48 flex flex-col">
 				<SectionWrapper className="">
 					<h1 className="text-center transition-colors duration-1000 text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r dark:from-yellow-300 dark:to-yellow-500 from-amber-300 to-amber-500">
 						Bento
