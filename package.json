@@ -31,7 +31,7 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@next/bundle-analyzer": "^14.2.12",
-    "@next/eslint-plugin-next": "^14.2.12",
+    "@next/eslint-plugin-next": "^14.2.13",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.7",
