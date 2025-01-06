@@ -16,7 +16,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@prisma/client": "^6.0.1",
+    "@prisma/client": "^6.1.0",
     "@skyra/discord-components-react": "^4.0.0-alpha.38",
     "luxon": "^3.5.0",
     "next": "^15.1.3",
