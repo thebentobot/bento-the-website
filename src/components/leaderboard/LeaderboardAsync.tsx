@@ -56,11 +56,11 @@ export const LeaderboardAsync = async ({ serverId }: { serverId?: string }) => {
 				Leaderboard for {guildData?.guildName ?? "Bento"}
 			</h1>
 			{serverId && guildData?.icon && (
-				<div className="bg-gray-900 mx-auto my-auto p-2 mt-8 w-64 rounded shadow-lg bg-opacity-50">
+				<div className="bg-gray-900/50 mx-auto my-auto p-2 mt-8 w-64 rounded-sm shadow-lg">
 					<Image width={256} height={256} className="mx-auto shadow-lg" src={guildData.icon} alt={"Server Icon"} />
 				</div>
 			)}
-			<div className="max-w-screen-2xl mx-auto px-3 pt-2">
+			<div className="max-w-(--breakpoint-2xl) mx-auto px-3 pt-2">
 				<LeaderboardParent users={rankings} />
 			</div>
 		</Fragment>

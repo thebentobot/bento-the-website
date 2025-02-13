@@ -20,7 +20,7 @@ export default function PatreonSupporters({ sponsors, disciples, enthusiasts, fo
 	return (
 		<Fragment>
 			{areAllCategoriesEmpty ? (
-				<div className="max-w-screen-2xl mx-auto px-3 pt-2">
+				<div className="max-w-(--breakpoint-2xl) mx-auto px-3 pt-2">
 					<p className="mt-4 max-w-2xl text-xl text-zinc-300 lg:mx-auto text-center mx-auto">
 						Other than the awesome users who support by using Bento 🍱
 						<br />
@@ -40,7 +40,7 @@ export default function PatreonSupporters({ sponsors, disciples, enthusiasts, fo
 				categories.map(
 					(category) =>
 						category.data.length > 0 && (
-							<div key={category.label} className="max-w-screen-2xl mx-auto px-3 pt-2">
+							<div key={category.label} className="max-w-(--breakpoint-2xl) mx-auto px-3 pt-2">
 								<SubHeader>
 									{category.data.length > 1 ? `Bento ${category.label}s` : `Bento ${category.label}`}
 								</SubHeader>
