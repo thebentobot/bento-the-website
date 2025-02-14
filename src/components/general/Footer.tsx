@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
 	return (
 		<div className="dark:bg-zinc-900 bg-zinc-100 dark:border-t-slate-800 border-t-slate-200 border-t">
-			<footer className="dark:bg-zinc-900 bg-zinc-100 max-w-screen-2xl mx-auto p-4 py-6">
+			<footer className="dark:bg-zinc-900 bg-zinc-100 max-w-(--breakpoint-2xl) mx-auto p-4 py-6">
 				<div className="flex flex-wrap">
 					<div className="w-full md:max-w-1/2 mb-4">
 						<p className="dark:text-yellow-400 text-amber-400 font-medium ">Bento</p>
