@@ -6,7 +6,7 @@ export const StatsSkeleton = () => (
 					<dl className="sm:grid sm:grid-cols-3">
 						<div className="flex flex-col  p-6 text-center ">
 							<dt className="order-2 mt-2 text-lg leading-6 font-medium dark:text-white text-black">Servers</dt>
-							<div className="flex space-x-2 justify-center items-center h-12">
+							<div className="flex gap-x-2 justify-center items-center h-12">
 								<span className="sr-only">Loading...</span>
 								<div className="h-6 w-6 dark:bg-white bg-black rounded-full animate-bounce [animation-delay:-0.3s]"></div>
 								<div className="h-6 w-6 dark:bg-white bg-black rounded-full animate-bounce [animation-delay:-0.15s]"></div>
@@ -15,7 +15,7 @@ export const StatsSkeleton = () => (
 						</div>
 						<div className="flex flex-col p-6 text-center ">
 							<dt className="order-2 mt-2 text-lg leading-6 font-medium dark:text-white text-black">Users</dt>
-							<div className="flex space-x-2 justify-center items-center h-12">
+							<div className="flex gap-x-2 justify-center items-center h-12">
 								<span className="sr-only">Loading...</span>
 								<div className="h-6 w-6 dark:bg-white bg-black rounded-full animate-bounce [animation-delay:-0.3s]"></div>
 								<div className="h-6 w-6 dark:bg-white bg-black rounded-full animate-bounce [animation-delay:-0.15s]"></div>

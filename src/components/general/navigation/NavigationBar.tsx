@@ -69,8 +69,8 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 	return (
 		<Disclosure
 			as="nav"
-			className={`bg-inherit/30 sticky top-0 z-40 backdrop-filter backdrop-blur-sm ${
-				isVisible ? "border-b dark:border-zinc-900/25 border-zinc-50/25 shadow" : ""
+			className={`bg-inherit/30 sticky top-0 z-40 backdrop-filter backdrop-blur-xs ${
+				isVisible ? "border-b dark:border-zinc-900/25 border-zinc-50/25 shadow-xs" : ""
 			}`}
 		>
 			{({ open }) => (
@@ -93,7 +93,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 									href={"/"}
 									className={`hover:bg-yellow-400 transition-colors duration-300 ease-in-out dark:text-white text-black hover:text-white dark:hover:text-black dark:hover:bg-yellow-500 rounded-md`}
 								>
-									<div className="flex flex-shrink-0 items-center">
+									<div className="flex shrink-0 items-center">
 										<Image className="block h-8 w-auto lg:hidden" width={500} height={500} src="/29.png" alt="Bento" />
 										<Image className="hidden h-8 w-auto lg:block" width={500} height={500} src="/29.png" alt="Bento" />
 										<span
@@ -105,7 +105,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 									</div>
 								</Link>
 								<div className="hidden sm:ml-6 sm:block">
-									<div className="flex space-x-4">
+									<div className="flex gap-x-4">
 										{navigationRoutes.map((item) => (
 											<Link
 												key={item.name}
@@ -128,7 +128,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 								{notifications && (
 									<button
 										type="button"
-										className="bg-zinc-800 p-1 rounded-full text-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+										className="bg-zinc-800 p-1 rounded-full text-zinc-400 hover:text-white focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-white"
 									>
 										<span className="sr-only">View notifications</span>
 										<BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -152,7 +152,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 								{avatar && (
 									<Menu as="div" className="relative ml-3">
 										<div>
-											<MenuButton className="flex rounded-full bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-800">
+											<MenuButton className="flex rounded-full bg-zinc-800 text-sm focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-800">
 												<span className="sr-only">Open user menu</span>
 												<Image className="h-8 w-8 rounded-full" src="/29.png" width={10} height={10} alt="" />
 											</MenuButton>
@@ -166,7 +166,7 @@ export default function NavigationBar({ navigationRoutes, notifications, avatar 
 											leaveFrom="transform opacity-100 scale-100"
 											leaveTo="transform opacity-0 scale-95"
 										>
-											<MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
+											<MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden">
 												<MenuItem>
 													{({ active }) => (
 														<Link
