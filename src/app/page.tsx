@@ -47,10 +47,10 @@ export default function Home() {
 		<div className="flex flex-col min-h-screen overflow-hidden">
 			<div className="landing-bg w-screen max-w-full min-h-dvh pb-48 flex flex-col">
 				<SectionWrapper className="">
-					<h1 className="text-center transition-colors duration-1000 text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r dark:from-yellow-300 dark:to-yellow-500 from-amber-300 to-amber-500">
+					<h1 className="text-center transition-colors duration-1000 text-8xl font-extrabold text-transparent bg-clip-text bg-linear-to-r dark:from-yellow-300 dark:to-yellow-500 from-black to-amber-500">
 						Bento
 					</h1>
-					<p className="text-center text-black dark:text-zinc-300 text-lg">
+					<p className="text-center text-black dark:text-gray-50 text-lg">
 						A Discord bot with media and entertainment commands, verified by{" "}
 						<span className="text-discordBlue">Discord</span>
 					</p>
@@ -65,7 +65,7 @@ export default function Home() {
 						</div>
 					</div>
 					<div>
-						<div className="bg-gradient-to-r from-yellow-400 to-amber-400 w-72 mx-auto rounded-xl p-[2px] flex justify-center">
+						<div className="bg-linear-to-r from-yellow-400 to-amber-400 w-72 mx-auto rounded-xl p-[2px] flex justify-center">
 							<div className="dark:bg-black bg-white dark:text-white text-black hover:text-black dark:hover:text-black dark:hover:bg-transparent hover:bg-transparent w-full mx-auto rounded-xl flex justify-center transition-colors duration-300 ease-in-out">
 								<Link className="w-full h-full text-center p-3 rounded-xl" href="/#Main Features">
 									<span className="font-bold">Check out Bento&apos;s features</span>

@@ -1,41 +1,54 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.js';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /* Regular (light) mode */
 .landing-bg::before {
-    content: "";
-    position: absolute;
-    z-index: -10;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(310.1deg, #000000 63%, #4b4b00 100%),
-                linear-gradient(141.85deg, #1a1a00 0%, #4b4b00 19.1%, #000000 46%),
-                linear-gradient(299.91deg, rgba(255, 255, 255, 0) 60.87%, #f5ab35 100%),
-                linear-gradient(325.39deg, #4b4b00 12.162162162162163%, #f5c542 100%, #2d2d00 30%),
-                linear-gradient(310.1deg, #f5ab35 1%, #ffffff88 52%);
-    background-blend-mode: screen, screen, normal, hard-light, normal;
-    filter: brightness(1.15) contrast(1) saturate(1);
+	content: "";
+	position: absolute;
+	z-index: -10;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(180deg, #fffde6 30%, #fef3c7 70%, #facc15 80%, #fcd34d 10%),
+	            radial-gradient(circle at 50% 20%, #fbc900 10%, transparent 70%);
+	background-blend-mode: multiply, screen;
+	filter: brightness(1) contrast(1.05) saturate(1.1);
 }
 
 /* Dark mode */
 .dark .landing-bg::before {
-    content: "";
-    position: absolute;
-    z-index: -10;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(310.1deg, #000000 63%, #4b4b00 100%),
-                linear-gradient(141.85deg, #1a1a00 0%, #4b4b00 19.1%, #000000 46%),
-                linear-gradient(299.91deg, rgba(255, 255, 255, 0) 60.87%, #f5ab35 100%),
-                linear-gradient(325.39deg, #4b4b00 12.162162162162163%, #f5c542 100%, #2d2d00 30%),
-                linear-gradient(310.1deg, #f5ab35 1%, #000 52%);
-    background-blend-mode: screen, screen, normal, hard-light, normal;
-    filter: brightness(1) contrast(1.5) saturate(0.8);
+	content: "";
+	position: absolute;
+	z-index: -10;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(180deg, #1a1a00 0%, #4b4b00 60%, #000000 100%),
+	            radial-gradient(circle at 40% 0%, #ffcc00 00%, transparent 70%),
+	            linear-gradient(340deg, #fecb00 10%, #000000 100%);
+	background-blend-mode: overlay, screen, normal;
+	filter: brightness(0.95) contrast(1.2) saturate(1);
 }
 
 .progress {
