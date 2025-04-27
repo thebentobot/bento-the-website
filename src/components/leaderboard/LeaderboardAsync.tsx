@@ -1,9 +1,10 @@
 import LeaderboardParent from "@/components/leaderboard/LeaderboardParent";
 import { Fragment } from "react";
 import Image from "next/image";
+import { fetchLeaderboardUsers } from "@/lib/api/fetch";
 
 export interface LeaderboardRankingsInterface {
-	rank: bigint;
+	rank: number;
 	level: number;
 	xp: number;
 	userID: bigint;
@@ -22,15 +23,15 @@ export const LeaderboardAsync = async ({ serverId }: { serverId?: string }) => {
 	return (
 		<Fragment>
 			<h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight dark:text-white text-black sm:text-4xl text-center">
-				Leaderboard for {guildData?.guildName ?? "Bento"}
+				Leaderboard for {rankings?.guildName ?? "Bento"}
 			</h1>
-			{serverId && guildData?.icon && (
+			{serverId && rankings?.icon && (
 				<div className="bg-gray-900/50 mx-auto my-auto p-2 mt-8 w-64 rounded-sm shadow-lg">
-					<Image width={256} height={256} className="mx-auto shadow-lg" src={guildData.icon} alt={"Server Icon"} />
+					<Image width={256} height={256} className="mx-auto shadow-lg" src={rankings.icon} alt={"Server Icon"} />
 				</div>
 			)}
 			<div className="max-w-(--breakpoint-2xl) mx-auto px-3 pt-2">
-				<LeaderboardParent users={rankings} />
+				<LeaderboardParent users={rankings.users} />
 			</div>
 		</Fragment>
 	);

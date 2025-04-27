@@ -1,5 +1,6 @@
+import { PatreonUserDto } from "@/lib/api/interfaces";
 
-export interface PatreonWithRank extends patreon {
+export interface PatreonWithRank extends PatreonUserDto {
 	rank: number;
 }
 
@@ -11,7 +12,7 @@ export interface PatreonsByTier {
 	supporters: PatreonWithRank[];
 }
 
-export const assignDynamicRanks = (patreons: patreon[]): PatreonWithRank[] => {
+export const assignDynamicRanks = (patreons: PatreonUserDto[]): PatreonWithRank[] => {
 	const tierPresence = {
 		sponsor: false,
 		disciple: false,
