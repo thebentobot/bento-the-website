@@ -11,15 +11,15 @@ export const rankStyles = {
 	5: { width: "w-96", avatarWidth: 25, avatarHeight: 25, textSize: "text-xs" },
 };
 
-export default function PatreonAvatar({ id, name, avatar, rank }: PatreonWithRank) {
-	const [avatarURL, setAvatarURL] = useState(avatar ?? "");
+export default function PatreonAvatar({ userId, name, avatarUrl, rank }: PatreonWithRank) {
+	const [avatarURL, setAvatarURL] = useState(avatarUrl ?? "");
 	const style = rankStyles[rank as keyof typeof rankStyles];
 	const username: string = name ?? "";
 
 	return (
 		<div>
 			<li
-				key={id}
+				key={userId}
 				className={`transition duration-300 ease-in-out dark:bg-zinc-900 bg-zinc-100 flex flex-wrap items-center ${style.width} my-4 px-4 rounded-lg group hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow-xs overflow-hidden`}
 			>
 				<div className="shrink-0 truncate text-left py-5 mx-auto">

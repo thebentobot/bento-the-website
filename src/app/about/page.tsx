@@ -91,16 +91,7 @@ export default function About() {
 					>
 						PostgreSQL
 					</Link>{" "}
-					database with{" "}
-					<Link
-						href="https://www.prisma.io/"
-						target="_blank"
-						rel="noreferrer"
-						className="dark:text-white text-black hover:underline"
-					>
-						Prisma
-					</Link>
-					.
+					database.
 				</Paragraph>
 				<Paragraph>
 					The Bento website is powered by{" "}

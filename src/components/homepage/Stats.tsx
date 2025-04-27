@@ -1,13 +1,11 @@
-import prisma from "@/lib/prisma";
+import { fetchUsageStats } from "@/lib/api/fetch";
 import { FormatThousands } from "@/utils";
-import { guild } from "@prisma/client";
 
 export const Stats = async () => {
-	const guilds: guild[] = await prisma.guild.findMany();
-	const users = FormatThousands(
-		guilds.reduce((acc, guild) => acc + (guild.memberCount === null ? 1 : guild.memberCount), 0),
-	);
-	const servers = guilds.length - 6;
+	const usageStats = await fetchUsageStats();
+	const users = FormatThousands(usageStats.userCount);
+	const servers = Math.max(0, usageStats.serverCount - 6);
+
 	return (
 		<div className="mt-10 pb-1">
 			<div className="relative">
