@@ -4,7 +4,7 @@ import { FormatThousands } from "@/utils";
 export const Stats = async () => {
 	const usageStats = await fetchUsageStats();
 	const users = FormatThousands(usageStats.userCount);
-	const servers = usageStats.serverCount - 6;
+	const servers = Math.max(0, usageStats.serverCount - 6);
 
 	return (
 		<div className="mt-10 pb-1">
