@@ -1,6 +1,4 @@
 import LeaderboardParent from "@/components/leaderboard/LeaderboardParent";
-import prisma from "@/lib/prisma";
-import { Prisma, PrismaPromise } from "@prisma/client";
 import { Fragment } from "react";
 import Image from "next/image";
 
@@ -18,37 +16,8 @@ export interface userRankingsInterface {
 	users: LeaderboardRankingsInterface[];
 }
 
-const queryServerLeaderboard = (serverId: string): PrismaPromise<LeaderboardRankingsInterface[]> => {
-	let query: any;
-	query = Prisma.sql`SELECT row_number() over (ORDER BY t.level DESC, t.xp DESC) as rank, t.level, t.xp, u.username, u.discriminator, t."avatarURL", t."userID"
-    FROM "guildMember" AS t
-    INNER JOIN "user" u on u."userID" = t."userID"
-    WHERE t."guildID" = $1
-    GROUP BY t.level, t.xp, u.username, u.discriminator, t."avatarURL", t."userID"
-    ORDER BY t.level DESC, t.xp DESC
-    LIMIT 50;`;
-	const inputString = BigInt(serverId);
-	query.values = [inputString];
-	return prisma.$queryRaw(query);
-};
-
 export const LeaderboardAsync = async ({ serverId }: { serverId?: string }) => {
-	const rankings: LeaderboardRankingsInterface[] = serverId
-		? await queryServerLeaderboard(serverId)
-		: await prisma.$queryRaw`
-    SELECT row_number() over (ORDER BY t.level DESC, t.xp DESC) AS rank, t.level, t.xp, t.username, t.discriminator, t."avatarURL", t."userID"
-    FROM "user" AS t
-    GROUP BY t.level, t.xp, t.username, t.discriminator, t."avatarURL", t."userID"
-    ORDER BY t.level DESC, t.xp DESC
-    LIMIT 50;`;
-
-	const guildData = serverId
-		? await prisma.guild.findFirst({
-				where: {
-					guildID: BigInt(serverId),
-				},
-			})
-		: null;
+	const rankings = await fetchLeaderboardUsers(serverId);
 
 	return (
 		<Fragment>

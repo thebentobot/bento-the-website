@@ -1,6 +1,4 @@
-import prisma from "@/lib/prisma";
 import { FormatThousands } from "@/utils";
-import { guild } from "@prisma/client";
 
 export const Stats = async () => {
 	const guilds: guild[] = await prisma.guild.findMany();

@@ -4,19 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npx prisma generate",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prettier": "npx prettier --write .",
-    "db:pull": "npx prisma db pull",
-    "db:migrate": "npx prisma migrate dev --name",
     "prepare": "husky",
     "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
     "@heroicons/react": "^2.2.0",
-    "@prisma/client": "^6.6.0",
     "@skyra/discord-components-react": "^4.0.0-alpha.38",
     "luxon": "^3.6.1",
     "next": "^15.3.1",
@@ -44,7 +41,6 @@
     "husky": "^9.1.7",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "prisma": "^6.6.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3"
   },

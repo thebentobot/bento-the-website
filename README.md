@@ -5,7 +5,7 @@
 
 This website is for [Bento 🍱](https://github.com/thebentobot/dotBento) a Discord bot with server moderation tools and various entertaining commands.
 
-The Bento 🍱 website is written in TypeScript and powered by the [React](https://reactjs.org/) Framework [Next.js](https://nextjs.org/), with CSS from [tailwindcss](https://tailwindcss.com/), and a [PostgreSQL](https://www.postgresql.org/) database used with the ORM [Prisma](https://www.prisma.io/)
+The Bento 🍱 website is written in TypeScript and powered by the [React](https://reactjs.org/) Framework [Next.js](https://nextjs.org/), with CSS from [tailwindcss](https://tailwindcss.com/).
 
 ## Getting Started
 

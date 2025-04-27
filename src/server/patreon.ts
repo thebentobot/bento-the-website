@@ -1,4 +1,3 @@
-import { patreon } from "@prisma/client";
 
 export interface PatreonWithRank extends patreon {
 	rank: number;
