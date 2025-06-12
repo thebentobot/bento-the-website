@@ -29,7 +29,7 @@
     "@commitlint/config-conventional": "^19.8.1",
     "@next/bundle-analyzer": "^15.3.3",
     "@next/eslint-plugin-next": "^15.1.7",
-    "@tailwindcss/postcss": "^4.1.8",
+    "@tailwindcss/postcss": "^4.1.10",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^24.0.1",
     "@types/react": "^19.0.1",
